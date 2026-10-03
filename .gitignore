@@ -1,0 +1,16 @@
+.env
+deployment/.env
+
+*.jks
+*.keystore
+key.properties
+
+.idea/
+.vscode/
+*.iml
+
+.DS_Store
+Thumbs.db
+*.log
+
+sauvegarde-*.sql

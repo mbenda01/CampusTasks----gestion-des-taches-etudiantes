@@ -1,0 +1,26 @@
+services:
+  campustasks-db:
+    image: postgres:17-alpine
+    container_name: campustasks-db
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: campustasks_db
+      POSTGRES_USER: campustasks_user
+      POSTGRES_PASSWORD: campustasks_pass
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - campustasks-data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U campustasks_user -d campustasks_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  campustasks-data:
+    name: campustasks-data
